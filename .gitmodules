@@ -1,0 +1,4 @@
+[submodule "vendor/pyenv"]
+	path = vendor/pyenv
+	url = git@github.com:pyenv/pyenv
+	branch = v1.1.5

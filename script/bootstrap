@@ -4,7 +4,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  uname -a
+  block compile gitsubmodule
+
+  cd "$shome/vendor/pyenv"
+  git fetch
+  git reset --hard "v$PYENV_VERSION"
 }
 
 main "$@"
