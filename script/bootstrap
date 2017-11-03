@@ -8,7 +8,7 @@ function main {
 
   cd "$shome/vendor/pyenv"
   git fetch
-  git reset --hard "v$PYENV_VERSION"
+  git reset --hard "v$PYTHON_ENV_VERSION"
 }
 
 main "$@"
