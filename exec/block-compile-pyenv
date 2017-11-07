@@ -14,11 +14,6 @@ function main {
   local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${ID_INSTALL}.tgz"
 
   mkdir -p "${tmp_versions}"
-  if [[ ! -d "${tmp_versions}/${ver_python}" ]]; then
-    fl_first_time=1
-  elif [[ ! -f "$pth_python_cache" ]]; then
-    fl_first_time=1
-  fi
 
   if [[ -f "$pth_python_cache" ]]; then
     (cd "${tmp_versions}" && gtar xfz "$pth_python_cache")
@@ -28,9 +23,7 @@ function main {
     pyenv rehash
     pip install pipenv 
     pyenv rehash
-  fi
 
-  if [[ -n "$fl_first_time" ]]; then
     mkdir -p "${DATA}/cache/pyenv"
     (cd "${tmp_versions}" && gtar cfz "$pth_python_cache" "${ver_python}")
   fi
