@@ -12,9 +12,9 @@ function main {
   local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${ID_INSTALL}.tgz"
 
   if [[ ! -d "${tmp_versions}/${ver_python}" ]]; then
-    if [[ ! -f "$pth_python_cache" ]]; then
-      fl_first_time=1
-    fi
+    fl_first_time=1
+  elif [[ ! -f "$pth_python_cache" ]]; then
+    fl_first_time=1
   fi
 
   if [[ -f "$pth_python_cache" ]]; then
