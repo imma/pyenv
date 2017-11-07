@@ -9,7 +9,7 @@ function main {
   local fl_first_time=
 
   local tmp_versions="${BOARD_PATH}/work/pyenv/vendor/pyenv/versions"
-  local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
+  local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${ID_INSTALL}.tgz"
 
   if [[ ! -d "${tmp_versions}/${ver_python}" ]]; then
     if [[ ! -f "$pth_python_cache" ]]; then
