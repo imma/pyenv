@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+function main {
+  local BUILD_DIR="$1"; shift
+  local CACHE_DIR="$1"; shift
+  local ENV_DIR="$1"; shift
+
+  local ver_python="$(pyenv version | awk '{print $1}')"
+  local fl_first_time=
+
+  local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${GEM_VERSION}-${BUNDLER_VERSION}-${ID_INSTALL}.tgz"
+
+  if [[ ! -d "${BOARD_PATH}/work/pyenv/versions/${ver_python}" ]]; then
+    if [[ ! -f "$pth_python_cache" ]]; then
+      fl_first_time=1
+    fi
+  fi
+
+  if [[ -f "$pth_python_cache" ]]; then
+    (cd "${BOARD_PATH}/work/pyenv/versions" && gtar xfz "$pth_python_cache")
+    pyenv rehash
+  else
+    pyenv install -s
+    pyenv rehash
+    pip install pipenv 
+    pyenv rehash
+  fi
+
+  if [[ -n "$fl_first_time" ]]; then
+    mkdir -p "${DATA}/cache/pyenv"
+    (cd "${BOARD_PATH}/work/pyenv/versions" && gtar cfz "$pth_python_cache" "${ver_python}")
+  fi
+
+  pyenv rehash
+}
+
+source sub "$0" "$@"
