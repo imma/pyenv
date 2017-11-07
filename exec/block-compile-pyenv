@@ -11,6 +11,7 @@ function main {
   local tmp_versions="${BOARD_PATH}/work/pyenv/vendor/pyenv/versions"
   local pth_python_cache="${DATA}/cache/pyenv/${ver_python}-${ID_INSTALL}.tgz"
 
+  mkdir -p "${tmp_versions}"
   if [[ ! -d "${tmp_versions}/${ver_python}" ]]; then
     fl_first_time=1
   elif [[ ! -f "$pth_python_cache" ]]; then
