@@ -7,7 +7,7 @@ function main {
 
   set -x
 
-  local ver_python="$(pyenv version | awk '{print $1}')"
+  local ver_python="$(pyenv local)"
   local fl_first_time=
 
   local tmp_versions="${BOARD_PATH}/work/pyenv/vendor/pyenv/versions"
