@@ -5,6 +5,8 @@ function main {
   local CACHE_DIR="$1"; shift
   local ENV_DIR="$1"; shift
 
+  set -x
+
   local ver_python="$(pyenv version | awk '{print $1}')"
   local fl_first_time=
 
