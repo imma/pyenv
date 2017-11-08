@@ -21,13 +21,14 @@ function main {
   else
     pyenv install -s
     pyenv rehash
-    pip install pipenv 
+    pip install pipenv=="${PIPENV_VERSION}"
     pyenv rehash
 
     mkdir -p "${DATA}/cache/pyenv"
     (cd "${tmp_versions}" && gtar cfz "$pth_python_cache" "${ver_python}")
   fi
 
+  pip install pipenv=="${PIPENV_VERSION}"
   pyenv rehash
 }
 
