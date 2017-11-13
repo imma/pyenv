@@ -4,11 +4,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  block compile gitsubmodule
-
-  cd "$shome/vendor/pyenv"
-  git fetch
-  git reset --hard "v$PYTHON_ENV_VERSION"
+  git clone -b "v${PYTHON_ENV_VERSION}" git@github.com:pyenv/pyenv "$shome/vendor/pyenv-${PYTHON_ENV_VERSION}" || true
+  ln -nfs "pyenv-${PYTHON_ENV_VERSION}" "$shome/vendor/pyenv" || {
+    rm -rf "$shome/vendor/pyenv"
+    ln -nfs "pyenv-${PYTHON_ENV_VERSION}" "$shome/vendor/pyenv"
+  }
 }
 
 main "$@"
