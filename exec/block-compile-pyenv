@@ -28,7 +28,7 @@ function main {
     (cd "${tmp_versions}" && gtar cfz "$pth_python_cache" "${ver_python}")
   fi
 
-  pip install pip=="${PIP_VERSION}"
+  pip install pip=="${PIPCLI_VERSION}"
   pip install pipenv=="${PIPENV_VERSION}"
   pyenv rehash
 }
